@@ -1,3 +1,4 @@
+# L
 x = "global"
 def outer():
     x = "outer local"
@@ -10,3 +11,29 @@ def outer():
     inner()
 
 outer()  # "func local"
+
+# E
+
+x = "global"
+def outer():
+    x = "outer local"
+    def inner():
+        x = "inner local"
+        def func():
+            print(x)
+        func()
+    inner()
+
+outer()  # "inner local"
+
+
+# G
+x = "global"
+def outer():
+    def inner():
+        def func():
+            print(x)
+        func()
+    inner()
+
+outer()  # "global"
